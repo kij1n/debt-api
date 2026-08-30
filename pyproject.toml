@@ -7,7 +7,10 @@ authors = [
     { name = "kij1n", email = "kij1n@proton.me" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.141.1",
+    "sqlalchemy>=2.0.52",
+]
 
 [project.scripts]
 debt-api = "debt_api:main"
@@ -15,3 +18,11 @@ debt-api = "debt_api:main"
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.3.1",
+    "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+    "ruff>=0.16.5",
+]
