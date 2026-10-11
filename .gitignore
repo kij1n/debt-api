@@ -1,7 +1,7 @@
 # Python-generated files
 __pycache__/
-.mypy_cache
-.ruff_cache
+.mypy_cache/
+.ruff_cache/
 *.py[oc]
 build/
 dist/
@@ -17,3 +17,4 @@ wheels/
 
 # Other files
 .env
+.db_data

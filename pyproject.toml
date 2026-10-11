@@ -9,11 +9,16 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.141.1",
+    "psycopg2>=2.9.13",
     "sqlalchemy>=2.0.52",
+    "types-psycopg2>=2.9.21.20260724",
 ]
 
 [project.scripts]
 debt-api = "debt_api:main"
+
+[tool.fastapi]
+entrypoint = "debt_api.main:app"
 
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]

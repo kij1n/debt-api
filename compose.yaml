@@ -1,6 +1,10 @@
 volumes:
   pg_data:
     driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./.db_data
 services:
   postgres:
     image: postgres:${POSTGRES_VERSION:-18}
