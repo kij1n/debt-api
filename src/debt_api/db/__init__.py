@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from sqlalchemy import URL, create_engine
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
 
@@ -13,14 +13,16 @@ if db_pass is None:
 db_port = os.getenv("POSTGRES_PORT", "5432")
 db_user = os.getenv("POSTGRES_USER", "postgres")
 db_name = os.getenv("POSTGRES_DB", "postgres")
+db_server = os.getenv("POSTGRES_SERVER", "localhost")
 
-url = URL(
-    "postgres+psycopg2",
+url = URL.create(
+    "postgresql+psycopg",
     password=db_pass,
     port=db_port,
     username=db_name,
     database=db_name,
+    host=db_server,
 )
 
 engine = create_engine(url)
-session = Session(engine)
+Session = sessionmaker(engine)

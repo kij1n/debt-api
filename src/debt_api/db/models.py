@@ -1,6 +1,6 @@
 from datetime import date
 from decimal import Decimal
-from enum import Enum
+from enum import StrEnum
 
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -10,7 +10,7 @@ class Base(DeclarativeBase):
     pass
 
 
-class DebtDireciton(Enum):
+class DebtDireciton(StrEnum):
     LENT: str = "lent"
     BORROWED: str = "borrowed"
 
