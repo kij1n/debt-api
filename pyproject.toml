@@ -12,14 +12,13 @@ dependencies = [
     "psycopg[binary]>=3.3.6",
     "python-dotenv>=1.2.3",
     "sqlalchemy>=2.0.52",
-    "types-psycopg2>=2.9.21.20260724",
 ]
 
 [project.scripts]
 debt-api = "debt_api:main"
 
 [tool.fastapi]
-entrypoint = "debt_api.api.main:app"
+entrypoint = "debt_api.api:app"
 
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]
