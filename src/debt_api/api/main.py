@@ -5,7 +5,7 @@ from debt_api.services.health import is_healthy
 router = APIRouter()
 
 
-@router.get("/api/healthz")
+@router.get("/api/health")
 def healthcheck():
     if is_healthy():
         return {"status": "healthy"}

@@ -1,6 +1,9 @@
-from debt_api.services.models.allocation import Allocation, IncompleteAllocation
-from debt_api.services.models.debt import Debt, IncompleteDebt
-from debt_api.services.models.debtor import Debtor, IncompleteDebtor
+from debt_api.services.models.allocation import (
+    AllocationModel,
+    IncompleteAllocationModel,
+)
+from debt_api.services.models.debt import DebtModel, IncompleteDebtModel
+from debt_api.services.models.debtor import DebtorModel, IncompleteDebtorModel
 from debt_api.services.models.filtering import (
     AmountRange,
     DateRange,
@@ -11,12 +14,12 @@ from debt_api.services.models.filtering import (
 )
 
 _all__ = [
-    Allocation,
-    IncompleteDebtor,
-    IncompleteAllocation,
-    Debt,
-    IncompleteDebt,
-    Debtor,
+    AllocationModel,
+    IncompleteDebtorModel,
+    IncompleteAllocationModel,
+    DebtModel,
+    IncompleteDebtModel,
+    DebtorModel,
     AmountRange,
     DateRange,
     DebtFilter,

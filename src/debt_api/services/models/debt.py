@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 from debt_api.db.models import DebtDireciton
 
 
-class Debt(BaseModel):
+class DebtModel(BaseModel):
     id: int
     batch_id: int | None = None
     debtor_name: int
@@ -17,7 +17,7 @@ class Debt(BaseModel):
     date_settled: date
 
 
-class IncompleteDebt(BaseModel):
+class IncompleteDebtModel(BaseModel):
     id: int | None = None
     batch_id: int | None = None
     debtor_name: int

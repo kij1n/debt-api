@@ -4,7 +4,7 @@ from decimal import Decimal
 from pydantic import BaseModel, Field
 
 
-class Payment(BaseModel):
+class PaymentModel(BaseModel):
     id: int
     debtor_id: int
     amount: Decimal = Field(ge=0)
@@ -12,7 +12,7 @@ class Payment(BaseModel):
     date_added: date
 
 
-class IncompletePayment(BaseModel):
+class IncompletePaymentModel(BaseModel):
     id: int | None = None
     debtor_id: int | None = None
     amount: Decimal | None = Field(None, ge=0)

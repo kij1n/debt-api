@@ -2,10 +2,10 @@ from sqlalchemy import and_, select
 
 from debt_api.db import Session
 from debt_api.db.models import Debtor
-from debt_api.services.models import IncompleteDebtor
+from debt_api.services.models import DebtorModel, IncompleteDebtorModel
 
 
-def get_debtor(filter: IncompleteDebtor) -> Debtor | list[Debtor]:
+def get_debtor(filter: IncompleteDebtorModel) -> Debtor | list[Debtor]:
     with Session() as session:
         if filter.id is not None:
             stmt = select(Debtor).where(Debtor.id == filter.id)
@@ -20,3 +20,7 @@ def get_debtor(filter: IncompleteDebtor) -> Debtor | list[Debtor]:
             ),
         )
         return session.scalars(stmt).all()
+
+
+def add_debtor(model: DebtorModel) -> None:
+    pass
