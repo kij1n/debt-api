@@ -1,3 +1,5 @@
+from collections.abc import Sequence
+
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -6,7 +8,7 @@ from debt_api.db.models import Debtor
 from debt_api.services.models import DebtorFilter, IncompleteDebtorModel
 
 
-def query_debtor(filter: DebtorFilter) -> None | Debtor | list[Debtor]:
+def query_debtor(filter: DebtorFilter) -> None | Debtor | Sequence[Debtor]:
     with Session() as session:
         if filter.id is not None or filter.name is not None:
             stmt = select(Debtor)

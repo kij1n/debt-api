@@ -8,6 +8,10 @@ repos:
         args: [--fix]
       - id: ruff-format
         types_or: [python, pyi, markdown]
+  - repo: https://github.com/astral-sh/ty-pre-commit
+    rev: v0.0.90
+    hooks:
+      - id: ty
   - repo: https://github.com/rhysd/actionlint
     rev: v1.7.12
     hooks:

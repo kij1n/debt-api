@@ -11,8 +11,8 @@ class Base(DeclarativeBase):
 
 
 class DebtDireciton(StrEnum):
-    LENT: str = "lent"
-    BORROWED: str = "borrowed"
+    LENT = "lent"
+    BORROWED = "borrowed"
 
 
 class Debt(Base):

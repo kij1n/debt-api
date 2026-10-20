@@ -12,7 +12,7 @@ db_pass = os.getenv("POSTGRES_PASSWORD")
 if db_pass is None:
     raise ValueError("Password must not be empty")
 
-db_port = os.getenv("POSTGRES_PORT", "5432")
+db_port = int(os.getenv("POSTGRES_PORT", "5432"))
 db_user = os.getenv("POSTGRES_USER", "postgres")
 db_name = os.getenv("POSTGRES_DB", "postgres")
 db_server = os.getenv("POSTGRES_SERVER", "localhost")
