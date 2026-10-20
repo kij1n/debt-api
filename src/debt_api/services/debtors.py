@@ -1,26 +1,13 @@
-from sqlalchemy import and_, select
-
-from debt_api.db import Session
+from debt_api.db.debtors import db_add_debtor, query_debtor
 from debt_api.db.models import Debtor
-from debt_api.services.models import DebtorModel, IncompleteDebtorModel
+from debt_api.services.models import IncompleteDebtorModel
 
 
 def get_debtor(filter: IncompleteDebtorModel) -> Debtor | list[Debtor]:
-    with Session() as session:
-        if filter.id is not None:
-            stmt = select(Debtor).where(Debtor.id == filter.id)
-            return session.scalars(stmt).first()
-
-        stmt = select(Debtor).filter(
-            and_(Debtor.name == filter.name if filter.name is not None else True),
-            and_(
-                Debtor.date_added == filter.date_added
-                if filter.date_added is not None
-                else True
-            ),
-        )
-        return session.scalars(stmt).all()
+    return query_debtor(filter)
 
 
-def add_debtor(model: DebtorModel) -> None:
-    pass
+def add_debtor(model: IncompleteDebtorModel) -> None | Exception | str:
+    if type(get_debtor(filter=model)) in [Debtor, list[Debtor]]:
+        return "Debtor aleady exists"
+    return db_add_debtor(model)

@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from sqlalchemy import URL, create_engine
 from sqlalchemy.orm import sessionmaker
 
+from debt_api.db.models import Base
+
 load_dotenv()
 
 db_pass = os.getenv("POSTGRES_PASSWORD")
@@ -25,4 +27,5 @@ url = URL.create(
 )
 
 engine = create_engine(url)
+Base.metadata.create_all(engine)
 Session = sessionmaker(engine)

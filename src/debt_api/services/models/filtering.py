@@ -31,3 +31,5 @@ class DebtFilter(Pagination, DateRange, AmountRange):
 
 class DebtorFilter(Pagination, DateRange):
     model_config = ConfigDict(extra="forbid")
+    id: int | None = None
+    name: str | None = None
