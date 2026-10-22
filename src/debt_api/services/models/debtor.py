@@ -4,9 +4,9 @@ from pydantic import BaseModel
 
 
 class DebtorModel(BaseModel):
-    id: int
+    id: int | None = None
     name: str
-    date_added: date
+    date_added: date | None = None
 
 
 class IncompleteDebtorModel(BaseModel):
