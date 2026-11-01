@@ -69,23 +69,18 @@ def db_add_debtor(model: DebtorModel) -> None | Exception:
 def db_update_debtor(model: IncompleteDebtorModel) -> str | Exception | DebtorModel:
     with Session() as session:
         try:
-            print(f"id: {model.id}, name: {model.name}")
             stmt = _prepare_exclusive_get_stmt(
                 DebtorFilter(id=model.id), wait_for_update=True
             )
-            debtor = session.scalars(stmt).one()
+            debtor: Debtor = session.scalars(stmt).one()
 
-            if model.name:
-                debtor.name = model.name
-
-            if model.date_added:
-                debtor.date_added = model.date_added
+            for name, val in vars(model).items():
+                if val is not None and hasattr(debtor, name):
+                    setattr(debtor, name, val)
 
             session.commit()
 
-            return DebtorModel(
-                id=debtor.id, name=debtor.name, date_added=debtor.date_added
-            )
+            return DebtorModel.model_validate(debtor)
 
         except SQLAlchemyError as e:
             return e

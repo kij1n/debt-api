@@ -8,13 +8,13 @@ from debt_api.db.models import DebtDireciton
 
 class DebtModel(BaseModel):
     id: int
-    batch_id: int | None = None
-    debtor_name: int
+    # batch_id: int | None = None
+    debtor_id: int
     amount: Decimal = Field(ge=0)
     description: str
     direction: DebtDireciton
     date_added: date
-    date_settled: date
+    date_settled: date | None = None
 
 
 class IncompleteDebtModel(BaseModel):
