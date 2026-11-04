@@ -99,3 +99,6 @@ Requests flow one way: `api` → `services` → `db`. Routers contain no busines
 - [ ] API keys with per-user scoping and operation-level permissions
 - [ ] Infrastructure on AWS managed with Terraform
 - [ ] Discord bot for querying debts in natural language
+
+## License
+Source code is released under the MIT License — see [LICENSE](LICENSE).
