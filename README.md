@@ -68,19 +68,21 @@ The interactive API docs are available at `http://localhost:8000/docs`.
 ### Run tests and checks
 
 ```bash
-uv run pytest
-uv run mypy src
+uv run ty check src
 uv run ruff check .
 ```
 
 ## Project structure
 
+```md
+src/debt_api/
+├── api/            # HTTP layer: FastAPI routers and app entry point (main.py)
+├── services/       # business logic: allocation, validation, use cases
+│   └── models/     # Pydantic schemas (Debt, Debtor, Payment, Allocation, filters)
+└── db/             # persistence: SQLAlchemy models and queries
 ```
-src/
-  <package>/        # TODO: fill in once the layout settles
-tests/
-alembic/
-```
+
+Requests flow one way: `api` → `services` → `db`. Routers contain no business logic, and services don't know about HTTP.
 
 ## Roadmap
 
@@ -97,7 +99,3 @@ alembic/
 - [ ] API keys with per-user scoping and operation-level permissions
 - [ ] Infrastructure on AWS managed with Terraform
 - [ ] Discord bot for querying debts in natural language
-
-## License
-
-<!-- TODO: e.g. MIT -->
