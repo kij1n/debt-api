@@ -4,8 +4,6 @@ from dotenv import load_dotenv
 from sqlalchemy import URL, create_engine
 from sqlalchemy.orm import sessionmaker
 
-from debt_api.db.models import Base
-
 load_dotenv()
 
 db_pass = os.getenv("POSTGRES_PASSWORD")
@@ -21,11 +19,10 @@ url = URL.create(
     "postgresql+psycopg",
     password=db_pass,
     port=db_port,
-    username=db_name,
+    username=db_user,
     database=db_name,
     host=db_server,
 )
 
 engine = create_engine(url)
-Base.metadata.create_all(engine)
 Session = sessionmaker(engine)
